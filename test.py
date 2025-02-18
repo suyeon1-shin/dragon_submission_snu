@@ -29,3 +29,5 @@ if __name__ == "__main__":
         predictions_path=Path(f"test-output/{job_name}"),
         output_file=Path("test-output/metrics.json"),
     ).evaluate()
+
+    print("Please check that all performances are above random guessing! For tasks 101-107, the performance should be above 0.7, for tasks 108-109 above 0.2.")

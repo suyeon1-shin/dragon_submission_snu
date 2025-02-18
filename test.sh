@@ -50,20 +50,12 @@ echo "=========================================="
 echo "Test result: "
 
 # Evaluate the output
-    # -v dragon-output-$VOLUME_SUFFIX:/output/ \
 docker run --rm \
     -v dragon-output-$VOLUME_SUFFIX:/input:ro \
     -v $SCRIPTPATH/test-ground-truth:/opt/app/ground-truth \
     --entrypoint python \
     joeranbosma/dragon_submission -m dragon_eval --folds 0
 
-# if [ $? -eq 0 ]; then
-#     echo "Test for $jobname successfully passed..."
-#     test_result="$test_result $jobname:pass"
-# else
-#     echo "Expected output was not found for $jobname..."
-#     test_result="$test_result $jobname:fail"
-# fi
 docker volume rm dragon-output-$VOLUME_SUFFIX
 
 echo "Please check that all performances are above random guessing! For tasks 101-107, the performance should be above 0.7, for tasks 108-109 above 0.2."
