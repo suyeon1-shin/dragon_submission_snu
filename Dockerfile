@@ -18,7 +18,7 @@ COPY --chown=user:user requirements.txt .
 RUN python -m pip install --user -r requirements.txt
 
 # Baseline 추가
-COPY --chown=user:user dragon_baseline/ ./dragon_baseline/
+#COPY --chown=user:user dragon_baseline/ ./dragon_baseline/
 
 # Download the model, tokenizer and metrics
 COPY --chown=user:user download_model.py .
