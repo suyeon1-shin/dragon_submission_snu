@@ -12,7 +12,7 @@ class DragonSubmission(DragonBaseline):
         Note: when changing the model, update the Dockerfile to pre-download that model.
         """
         super().__init__(**kwargs)
-        self.model_name = "joeranbosma/dragon-roberta-base-mixed-domain"
+        self.model_name = "joeranbosma/dragon-roberta-large-mixed-domain"
         self.per_device_train_batch_size = 4
         self.gradient_accumulation_steps = 2
         self.gradient_checkpointing = False
@@ -36,7 +36,7 @@ class DragonSubmission(DragonBaseline):
             # Remove HTML tags and URLs:
             text = re.sub(r"<.*?>", "", text)
             text = re.sub(r"http\S+", "", text)
-
+            text = re.sub(r"normal+", "", text)
             return text
         else:
             # If text is a list, apply the function to each element
@@ -47,8 +47,8 @@ class DragonSubmission(DragonBaseline):
         super().preprocess()
 
         # Uncomment the following lines to use the custom_text_cleaning function
-        # for df in [self.df_train, self.df_val, self.df_test]:
-        #     df[self.task.input_name] = df[self.task.input_name].map(self.custom_text_cleaning)
+        for df in [self.df_train, self.df_val, self.df_test]:
+            df[self.task.input_name] = df[self.task.input_name].map(self.custom_text_cleaning)
 
 
 if __name__ == "__main__":
