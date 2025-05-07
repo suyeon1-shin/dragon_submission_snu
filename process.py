@@ -36,7 +36,6 @@ class DragonSubmission(DragonBaseline):
             # Remove HTML tags and URLs:
             text = re.sub(r"<.*?>", "", text)
             text = re.sub(r"http\S+", "", text)
-            text = re.sub(r"normal+", "", text)
             return text
         else:
             # If text is a list, apply the function to each element
