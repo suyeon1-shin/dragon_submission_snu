@@ -23,7 +23,7 @@ RUN python -m pip install --user -r requirements.txt
 # Download the model, tokenizer and metrics
 COPY --chown=user:user download_model.py .
 # Download the model you want to use, e.g.:
-RUN python download_model.py --model_name joeranbosma/dragon-roberta-large-mixed-domain
+RUN python download_model.py --model_name joeranbosma/dragon-roberta-large-domain-specific
 COPY --chown=user:user download_metrics.py .
 RUN python download_metrics.py
 
